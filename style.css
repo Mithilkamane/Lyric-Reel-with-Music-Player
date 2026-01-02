@@ -1,0 +1,93 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Full screen background for 9:16 Reel */
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, #2b0000 0%, #000000 100%);
+  overflow: hidden;
+  font-family: 'Georgia', serif;
+}
+
+/* Reel container */
+.reel {
+  width: 360px;   /* 9:16 ratio */
+  height: 640px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+/* Lyrics style */
+#lyric {
+  color: #ff6b81;
+  font-size: 2rem;
+  line-height: 1.5;
+  text-shadow:
+    0 0 10px #ff6b81,
+    0 0 20px #ff4d6d,
+    0 0 30px #ff2d5c;
+  animation: lyricFade 1.5s ease;
+  padding: 0 10px;
+  position: relative;
+  z-index: 10;
+}
+
+/* Fade animation */
+@keyframes lyricFade {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Floating hearts animation */
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #ff4d6d;
+  transform: rotate(45deg);
+  bottom: 0;
+  animation: floatHeart 4s linear infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #ff4d6d;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart::after {
+  left: 10px;
+  top: 0;
+}
+
+@keyframes floatHeart {
+  0% { transform: translateY(0) rotate(45deg); opacity: 1; }
+  100% { transform: translateY(-600px) rotate(45deg); opacity: 0; }
+}
+
+/* Audio controls styling */
+audio {
+  position: fixed;
+  bottom: 20px;
+  width: 300px;
+  z-index: 20;
+}
